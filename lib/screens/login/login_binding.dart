@@ -5,6 +5,6 @@ class LoginBinding implements Bindings {
   @override
   void dependencies() {
     // TODO: implement dependencies
-    Get.put<LoginScreen>(const LoginScreen());
+    Get.put<LoginScreen>(LoginScreen());
   }
 }

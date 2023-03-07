@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_app/screens/home/home_controller.dart';
 import 'package:getx_app/screens/login/login_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -12,19 +13,47 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Home screen"),
         ),
-        body: Column(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Obx(() {
+                return Text(
+                  "Counter is: --> ${controller.counter.value}",
+                  style: const TextStyle(fontSize: 25),
+                );
+              }),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.to(() => LoginScreen());
+                },
+                child: const Icon(Icons.email),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
-              height: 200,
-              width: 200,
-              color: Colors.black26,
-            ),
-            ElevatedButton(
+            FloatingActionButton(
+              heroTag: 'Add',
               onPressed: () {
-                // Get.to(const LoginScreen());
-                Get.to(() => const LoginScreen());
+                controller.counterAdd();
               },
-              child: const Icon(Icons.email),
+              child: const Icon(Icons.add),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            FloatingActionButton(
+              heroTag: 'Remove',
+              onPressed: () {
+                controller.counterMinus();
+              },
+              child: const Icon(Icons.remove),
             ),
           ],
         ),

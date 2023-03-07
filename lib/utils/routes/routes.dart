@@ -7,5 +7,5 @@ import 'package:getx_app/utils/routes/routes_name.dart';
 
 List<GetPage<dynamic>> routesList = [
   GetPage(name: RoutesName.homeScreen, page: () => const HomeScreen(), binding: HomeBinding()),
-  GetPage(name: RoutesName.loginScreen, page: () => const LoginScreen(), binding: LoginBinding()),
+  GetPage(name: RoutesName.loginScreen, page: () => LoginScreen(), binding: LoginBinding()),
 ];
